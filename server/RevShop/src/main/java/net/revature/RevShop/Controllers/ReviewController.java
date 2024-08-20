@@ -17,10 +17,14 @@ import java.util.Optional;
 @CrossOrigin
 public class ReviewController{
     private final ReviewService reviewService;
+    private final UserService userService;
+    private final ProductService productService;
 
     @Autowired
-    public ReviewController(ReviewService reviewService) {
+    public ReviewController(ReviewService reviewService, UserService userService, ProductService productService) {
         this.reviewService = reviewService;
+        this.userService = userService;
+        this.productService = productService;
     }
 
     @GetMapping("/{productId}")
@@ -38,14 +42,20 @@ public class ReviewController{
         return reviewService.getReviewById(reviewId);
     }
 
-    //@PostMapping
+    @PostMapping("/review/{userId}/{productId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Review createReview(@PathVariable Integer userId, @PathVariable Integer productId, @RequestBody Review review){
+        return reviewService.addReview(userId, productId, review);
+    }
 
-    @PutMapping("/update_review")
-    public Review updateReview(@RequestBody Review review){
-        return reviewService.editReview(review);
+    @PutMapping("/review/{reviewId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateReview(@PathVariable Integer reviewId, @RequestBody Review review){
+        reviewService.updateReview(review.getComment(), reviewId);
     }
 
     @DeleteMapping("/{reviewId}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteReviewById(@PathVariable Integer reviewId){
         reviewService.deleteReview(reviewId);
     }

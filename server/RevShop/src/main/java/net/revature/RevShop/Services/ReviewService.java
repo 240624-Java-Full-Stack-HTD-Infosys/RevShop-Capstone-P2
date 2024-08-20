@@ -9,7 +9,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.stream.events.Comment;
 import java.util.List;
 
 @Service
@@ -39,16 +38,23 @@ public class ReviewService {
         return reviewRepository.findByReviewId(reviewId);
     }
 
-    public Review addReview(Review review) {
+    public Review addReview(Integer userId, Integer productId, Review review){
+        User user = userRepository.findUserByUserId(userId);
+        Product product = productRepository.findProductByProductId(productId);
+        review.setProduct(product);
+        review.setUser(user);
         return reviewRepository.save(review);
     }
 
-    public Review editReview(Review updatedReview) {
+    /*public Review editReview(Review updatedReview) {
         //Review
         Review currReview = getReviewById(updatedReview.getReviewId());
         currReview.setComment(updatedReview.getComment());
         currReview.setRating(updatedReview.getRating());
         return reviewRepository.save(currReview);
+    }*/
+    public void updateReview(String content, Integer reviewId){
+        reviewRepository.update(content, reviewId);
     }
 
     public void deleteReview(Integer reviewId) {
