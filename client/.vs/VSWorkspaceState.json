@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Interface",
+    "\\src\\logopics",
+    "\\src\\Pages",
+    "\\src\\Pages\\OrderHistory"
+  ],
+  "SelectedNode": "\\src\\Pages\\OrderHistory\\OrderListComp.tsx",
+  "PreviewInSolutionExplorer": false
+}

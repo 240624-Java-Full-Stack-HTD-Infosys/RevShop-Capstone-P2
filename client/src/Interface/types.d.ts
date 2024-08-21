@@ -25,3 +25,13 @@ export interface Products {
     img_url: string;
     category: Category;
 }
+
+interface HistoryElement {
+    orderId: number,
+    buyer: User,
+    totalAmount: number,
+    orderStatus: string,
+    createdAt: string,
+    updatedAt: string,
+    orderItems: Array<Products>
+}
