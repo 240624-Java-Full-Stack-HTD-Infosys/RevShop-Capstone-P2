@@ -16,6 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT * FROM products JOIN users ON Users.userId = Products.userId WHERE username = ?1 AND user_type = seller",nativeQuery = true)
     List<Product> getAllProductsBySellerName(String sellerName);
 
-    @Query(value = "SELECT * FROM products WHERE name = ?1",nativeQuery = true)
+    @Query(value = "SELECT * FROM products WHERE Products.name = ?1",nativeQuery = true)
     List<Product> getAllProductsByItemName(String productName);
 }

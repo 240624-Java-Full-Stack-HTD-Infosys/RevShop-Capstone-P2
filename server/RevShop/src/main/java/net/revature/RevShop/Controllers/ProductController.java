@@ -42,12 +42,12 @@ public class ProductController {
         return name;
     }
     @GetMapping("/seller")
-    public ResponseEntity<List<Product>> getAllProductBySellerName(@RequestBody String sellerName){
-        return ResponseEntity.ok(productService.getProductsBySellerName(sellerName));
+    public List<Product> getAllProductBySellerName(@RequestBody String sellerName){
+        return productService.getProductsBySellerName(sellerName);
     }
 
     @GetMapping("/keyword")
-    public ResponseEntity<List<Product>> getAllProductByItemName(@RequestBody String itemName){
-        return ResponseEntity.ok(productService.getProductsByItemName(itemName));
+    public List<Product> getAllProductByItemName(@RequestBody String itemName){
+        return productService.getProductsByItemName(itemName);
     }
 }
