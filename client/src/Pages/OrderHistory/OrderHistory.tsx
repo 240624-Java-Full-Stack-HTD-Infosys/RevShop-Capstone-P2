@@ -10,8 +10,10 @@ function OrderHistory() {
     let [orderHistory, setHistory] = useState(Array<HistoryElement>);
     let [pageNumber, setPageNumber] = useState(0);
 
+    let itemsPerPage = 10;
+
     function nextPage() {
-        setPageNumber(pageNumber + 1);
+        if (pageNumber < orderHistory.length / itemsPerPage) setPageNumber(pageNumber + 1);
     }
     function prevPage() {
         if (pageNumber > 0) setPageNumber(pageNumber - 1);
@@ -22,7 +24,7 @@ function OrderHistory() {
         let fetchedList: Promise<Array<HistoryElement>> = fetchHistoryRequest();
 
         fetchedList.then((list) => {
-            let pageList: Array<HistoryElement> = list.splice(pageNumber * 10, pageNumber * 10 + 10);
+            let pageList: Array<HistoryElement> = list.splice(pageNumber * itemsPerPage, pageNumber * itemsPerPage + itemsPerPage);
 
             setHistory(pageList);
         })
