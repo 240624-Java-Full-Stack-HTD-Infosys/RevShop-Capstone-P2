@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../CSS/productDetails.css'
 import { useParams } from 'react-router-dom';
-import { Product ,User , Category } from '../Interface/types';
+import { Products ,User , Category } from '../Interface/types';
   
 
 function ProductDetails() {
     //this is the param for route in app.tsx we basically grabbing the productId
     const { productId } = useParams<{ productId: string }>();
-     const [product, setProduct] = useState<Product | null>(null);
+     const [product, setProduct] = useState<Products | null>(null);
      const [User , setUser] = useState<User | null >(null);
 
      useEffect(() => {

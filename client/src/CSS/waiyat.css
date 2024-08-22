@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f8f9fa; 
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 50px;
+    border-radius: 99em;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transform-origin: center left;
+    transition: width 0.2s ease-in;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .link:hover {
+    width: 120px; 
+    background-color: #e0e0e0; 
+  }
+  
+  .icon {
+    font-size: 20px; 
+  }
+  
+  .text {
+    margin-left: 8px; 
+    font-size: 16px; 
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+  }
+  
+  .link:hover .text {
+    opacity: 1; 
+  }
