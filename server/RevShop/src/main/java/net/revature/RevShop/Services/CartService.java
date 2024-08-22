@@ -46,14 +46,21 @@ public class CartService {
     }
 
     public void removeProductFromCart(Integer cartItemId){
-        CartItem product = cartRepository.findByCartItemId(cartItemId);
+        CartItem product = cartRepository.findByCartItemId(cartItemId)
+                .orElseThrow(() -> new RuntimeException("Product is not found in the cart."));
 
-        if(product == null){
-            System.out.println("Product is not found in the cart.");
-            throw new RuntimeException("Product is not found in the cart.");
-        }else{
-            cartRepository.deleteByCartItemId(cartItemId);
+        cartRepository.deleteByCartItemId(cartItemId);
+    }
+
+    public CartItem adjustQuantity(Integer cartItemId, Integer quantity){
+        CartItem cartItem = cartRepository.findByCartItemId(cartItemId)
+                .orElseThrow(() -> new RuntimeException("Cart item not found."));
+        if(quantity <= 0){
+            throw new IllegalArgumentException("Quantity must be greater than zero.");
         }
 
+        cartItem.setQuantity(quantity);
+
+        return cartRepository.save(cartItem);
     }
 }
