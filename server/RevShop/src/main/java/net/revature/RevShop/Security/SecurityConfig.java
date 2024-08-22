@@ -29,14 +29,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable) //Disables CSRF (Cross-Site Request Forgery) protection. This is commonly disabled in stateless applications (like those using JWT for authentication) because they don’t use cookies for session tracking.
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth", "/api/users").permitAll()
                         .requestMatchers("/products/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //Indicates that the application does not maintain any session state between requests. This is common in RESTful APIs where each request is independent, and authentication is typically handled via tokens (e.g., JWT) rather than sessions.
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); //processes username and password authentication. By placing the JWT filter before this, it ensures that JWTs are checked and processed before any other authentication logic.
 
         return http.build();
     }
