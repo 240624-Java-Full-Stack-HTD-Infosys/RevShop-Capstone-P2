@@ -1,7 +1,7 @@
 import axios from "axios"
 import React, { useEffect } from "react"
 import { useState } from "react"
-import { Products } from "../Interface/types.js"
+import { Products } from "../../Interface/types.js"
 
 function Product(){
    

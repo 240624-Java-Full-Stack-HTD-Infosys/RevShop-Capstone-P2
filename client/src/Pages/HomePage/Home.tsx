@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { User } from '../Interface/types';
-import config from '../config';
-import { useAuth } from '../Context/AuthContext';
+import { User } from '../../Interface/types';
+import config from '../../config';
+import { useAuth } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
