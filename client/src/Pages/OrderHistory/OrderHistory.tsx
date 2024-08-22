@@ -2,11 +2,20 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { User, Products, HistoryElement } from "../../Interface/types.js"
 import OrderListComp from "./OrderListComp"
+import OrderListHeader from "./OrderListHeader"
+import "./Order.css";
 
 function OrderHistory() {
 
     let [orderHistory, setHistory] = useState(Array<HistoryElement>);
     let [pageNumber, setPageNumber] = useState(0);
+
+    function nextPage() {
+        setPageNumber(pageNumber + 1);
+    }
+    function prevPage() {
+        if (pageNumber > 0) setPageNumber(pageNumber - 1);
+    }
 
     //Passing an empty list makes this only run on the first cycle
     useEffect(() => {
@@ -22,6 +31,11 @@ function OrderHistory() {
 
     return (
         <>
+
+        <div>
+                <OrderListHeader></OrderListHeader>
+        </div>
+
         {
             orderHistory.map((h: HistoryElement, index) => (
                 <div key={index}>
@@ -30,13 +44,21 @@ function OrderHistory() {
                         buyer={h.buyer}
                         totalAmount={h.totalAmount}
                         orderStatus={h.orderStatus}
-                        createdAt={h.createdAt}
+                        createdAt={h.createdAt.slice(0,10)}
                         updatedAt={h.updatedAt}
                         orderItems={h.orderItems}
                     />
                 </div>
             ))
         }
+
+        <div>
+            <ul className="pagination">
+                <li className="page-item"> <button onClick={prevPage}>Previous</button></li>
+                <li className="page-item"><button onClick={nextPage}>Next</button></li>
+            </ul>
+        </div>
+
         </>
     );
 
@@ -58,7 +80,6 @@ async function fetchHistoryRequest(): Promise<Array<HistoryElement>> {
         if (!(response.status === 200)) {
             throw new Error(`Response status: ${response.status}`);
         }
-        console.log(response.data);
         return response.data;
     }
     catch(error: any) {
