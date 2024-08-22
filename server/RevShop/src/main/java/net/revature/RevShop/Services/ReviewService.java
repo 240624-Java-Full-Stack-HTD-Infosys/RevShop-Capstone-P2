@@ -27,11 +27,11 @@ public class ReviewService {
     }
 
     public List<Review> getAllProductReviews(Integer productId) {
-        return reviewRepository.findByProductId(productId);
+        return reviewRepository.reviewsOfProduct(productId);
     }
 
     public List<Review> getAllUserReviews(Integer userId) {
-        return reviewRepository.findByUserId(userId);
+        return reviewRepository.reviewsOfUser(userId);
     }
 
     public Review getReviewById(Integer reviewId) {
@@ -41,6 +41,14 @@ public class ReviewService {
     public Review addReview(Integer userId, Integer productId, Review review){
         User user = userRepository.findUserByUserId(userId);
         Product product = productRepository.findProductByProductId(productId);
+
+        if(user == null){
+            throw new IllegalArgumentException("This user does not exist.");
+        }
+        else if(product == null){
+            throw new IllegalArgumentException("This product does not exist.");
+        }
+
         review.setProduct(product);
         review.setUser(user);
         return reviewRepository.save(review);

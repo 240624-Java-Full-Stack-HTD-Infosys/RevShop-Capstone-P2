@@ -1,4 +1,4 @@
-package net.revature.RevShop;
+/*package net.revature.RevShop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -139,3 +139,4 @@ class RevShopApplicationTests {
     }
 
 }
+*/

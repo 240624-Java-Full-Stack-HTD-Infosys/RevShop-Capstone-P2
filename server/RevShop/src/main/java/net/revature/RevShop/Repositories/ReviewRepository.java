@@ -12,14 +12,22 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
-    List<Review> findByProductId(Integer productId);
+    //List<Review> findByProductId(Integer productId);
 
     Review findByReviewId(Integer reviewId);
 
-    List<Review> findByUserId(Integer userId);
+    //List<Review> findByUserId(Integer userId);
 
     @Modifying
     @Query(value = "UPDATE reviews SET content = ?1 WHERE review_id = ?2", nativeQuery = true)
     void update(String content, Integer reviewId);
+
+    @Modifying
+    @Query(value = "SELECT * FROM reviews WHERE user_id = ?1", nativeQuery = true)
+    List<Review> reviewsOfUser(Integer userId);
+
+    @Modifying
+    @Query(value = "SELECT * FROM reviews WHERE product_id = ?1", nativeQuery = true)
+    List<Review> reviewsOfProduct(Integer productId);
 
 }
