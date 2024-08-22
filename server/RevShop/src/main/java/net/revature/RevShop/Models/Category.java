@@ -1,5 +1,6 @@
 package net.revature.RevShop.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -19,6 +20,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
+    @JsonBackReference("category")
     private Set<Product> products = new HashSet<>();
 
     public Category() {
@@ -49,10 +51,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
     }
 
     public void setProducts(Set<Product> products) {

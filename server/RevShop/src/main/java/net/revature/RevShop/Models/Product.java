@@ -1,6 +1,7 @@
 package net.revature.RevShop.Models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -19,8 +20,6 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
-
-
 
     @JoinColumn(nullable = false, name = "sellerId")
     @ManyToOne(fetch = FetchType.EAGER)
@@ -48,6 +47,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
+    @JsonManagedReference
     private Category category;
 
     @CreationTimestamp
