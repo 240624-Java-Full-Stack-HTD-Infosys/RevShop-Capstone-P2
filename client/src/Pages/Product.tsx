@@ -34,7 +34,7 @@ function Product(){
 }, []);
 
 function handleProductDetail(productId: number) {
-    navigate(`/product/${productId}`);
+    navigate(`/products/details/${productId}`);
 }
 
 /*
