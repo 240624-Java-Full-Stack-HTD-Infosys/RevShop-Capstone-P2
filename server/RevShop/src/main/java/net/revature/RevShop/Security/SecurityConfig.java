@@ -36,6 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/cart/add").permitAll()
                         .requestMatchers("/api/cart/delete/{cartItemId}").permitAll()
                         .requestMatchers("/api/cart/view").permitAll()
+                        .requestMatchers("/api/cart/{cartItemId}/quantity").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
