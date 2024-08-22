@@ -1,6 +1,7 @@
 import axios from "axios"
 import React, { useEffect } from "react"
 import { useState } from "react"
+import { Products } from "../Interface/types.js"
 import '../CSS/pagination.css';
 import { Route } from "react-router-dom";
 import Produc from "../Feature/Products";
@@ -15,7 +16,7 @@ import ProductPagination from "../Feature/ProductPagination";
     type: string;
     businessDetails?: string;
     banned: boolean;
- 
+
 }
     //made seller and category into any
     interface Products {
@@ -28,10 +29,10 @@ import ProductPagination from "../Feature/ProductPagination";
    img_url: string;
     category: Category; // change later category: Category;
 }
- 
+
  interface Category {
-    categoryId: number;  
-    name: string;        
+    categoryId: number;
+    name: string;
     products: Products[];
 }
 
@@ -92,11 +93,11 @@ return (
         
     <Produc product={currentProduct}/>
     <ProductPagination productsPerPage={productsPerPage} totalProduct={product.length} pagination={paginate}/>
-  
+
     </div>
-    
+
   );
-  
+
 }
 
 
