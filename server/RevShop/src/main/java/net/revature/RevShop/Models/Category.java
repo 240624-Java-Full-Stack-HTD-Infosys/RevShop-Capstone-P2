@@ -20,7 +20,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    @JsonBackReference("category")
+    @JsonBackReference
     private Set<Product> products = new HashSet<>();
 
     public Category() {

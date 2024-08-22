@@ -3,6 +3,9 @@ import { User } from '../Interface/types';
 import config from '../config';
 import { useAuth } from '../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import FormProduct from './FormProduct';
+
+
 
 const Home: React.FC = () => {
     const [userId, setUserId] = useState('');
@@ -69,6 +72,10 @@ const Home: React.FC = () => {
                     <p>Business Details: {user.businessDetails}</p>
                 </div>
             )}
+
+
+            <h1>add product to sell form</h1>
+           <FormProduct />
         </div>
     );
 };
