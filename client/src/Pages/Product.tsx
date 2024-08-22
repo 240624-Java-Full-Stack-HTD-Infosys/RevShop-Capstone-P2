@@ -1,40 +1,12 @@
 import axios from "axios"
 import React, { useEffect } from "react"
 import { useState } from "react"
-import { Products } from "../Interface/types.js"
 import '../CSS/pagination.css';
 import { Route } from "react-router-dom";
 import Produc from "../Feature/Products";
 import ProductPagination from "../Feature/ProductPagination";
+import { Products } from "../Interface/types.js"
 
-    interface User {
-    userId: number;
-    username: string;
-    email: string;
-    firstName?: string;
-    lastName?: string;
-    type: string;
-    businessDetails?: string;
-    banned: boolean;
-
-}
-    //made seller and category into any
-    interface Products {
-    productId: number;
-    seller: User;
-    name: String;
-    description: string;
-    price: number;
-    stock: number;
-   img_url: string;
-    category: Category; // change later category: Category;
-}
-
- interface Category {
-    categoryId: number;
-    name: string;
-    products: Products[];
-}
 
 function Product(){
    
@@ -53,7 +25,7 @@ function Product(){
                     'Content-Type': 'application/json'
                 }
             });
-    
+           
            console.log(response.data);
            setProduct(response.data)
            
@@ -93,11 +65,11 @@ return (
         
     <Produc product={currentProduct}/>
     <ProductPagination productsPerPage={productsPerPage} totalProduct={product.length} pagination={paginate}/>
-
+  
     </div>
-
+    
   );
-
+  
 }
 
 
