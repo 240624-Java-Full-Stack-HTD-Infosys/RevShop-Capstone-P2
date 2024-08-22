@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function waiyatNavbar() {
   return (
     <div>
-
+🏷️
     <nav className="navbar">
         <Link to="/home" className="link">
             <span className="icon">🏠</span>
@@ -14,7 +14,12 @@ function waiyatNavbar() {
             <span className="icon">📦</span>
             <span className="text">product</span>
         </Link>
-        <Link to="/messages" className="link">
+        <Link to="/addnewproduct" className="link">
+            <span className="icon">🏷️</span>
+            <span className="text">cart</span>
+        </Link>
+
+        <Link to="/cart" className="link">
             <span className="icon">🛒</span>
             <span className="text">cart</span>
         </Link>

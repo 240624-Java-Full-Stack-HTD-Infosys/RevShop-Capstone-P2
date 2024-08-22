@@ -39,4 +39,9 @@ public class ProductService {
     public List<Product> getProductsByItemName(String itemName){
         return productRepository.getAllProductsByItemName(itemName);
     }
+    
+    // I also added this to add the product
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
+    }
 }

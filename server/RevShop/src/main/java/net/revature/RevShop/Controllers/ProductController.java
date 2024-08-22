@@ -49,4 +49,12 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllProductByItemName(@RequestBody String itemName){
         return ResponseEntity.ok(productService.getProductsByItemName(itemName));
     }
+
+    // this is what i added to add the product
+    @PostMapping("/add")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+        Product newProduct = productService.saveProduct(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
+    }
+
 }
