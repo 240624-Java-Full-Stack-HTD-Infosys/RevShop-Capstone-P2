@@ -37,9 +37,8 @@ public class ProductController {
 
     @GetMapping("/test")
     @ResponseStatus(HttpStatus.OK)
-    public List<Product> getAllProduct2(){
-        List<Product>name = productService.getAllProducts();
-        return name;
+    public ResponseEntity<?> getAllProduct2() {
+        return ResponseEntity.ok(productService.getAllProducts());
     }
     @GetMapping("/seller")
     public ResponseEntity<List<Product>> getAllProductBySellerName(@RequestBody String sellerName){

@@ -7,5 +7,31 @@ export interface User {
     type: string;
     businessDetails?: string;
     banned: boolean;
+}
 
+export interface Category {
+    categoryId: number;
+    name: string;
+    products: Products[];
+}
+
+export interface Products {
+    productId: number;
+    seller: User;
+    name: String;
+    description: string;
+    price: number;
+    stock: number;
+    img_url: string;
+    category: Category;
+}
+
+interface HistoryElement {
+    orderId: number,
+    buyer: User,
+    totalAmount: number,
+    orderStatus: string,
+    createdAt: string,
+    updatedAt: string,
+    orderItems: Array<Products>
 }

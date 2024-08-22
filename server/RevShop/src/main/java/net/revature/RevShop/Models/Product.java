@@ -21,8 +21,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
 
-
-
     @JoinColumn(nullable = false, name = "sellerId")
     @ManyToOne(fetch = FetchType.EAGER)
   
