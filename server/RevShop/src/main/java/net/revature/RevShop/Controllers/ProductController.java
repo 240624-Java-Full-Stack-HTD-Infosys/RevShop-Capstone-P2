@@ -29,6 +29,12 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductById(productId));
     }
 
+    @PutMapping("/{product_id}/{quantity}")
+    @ResponseStatus(HttpStatus.OK)
+    public void modifyProductQuantity(@PathVariable("product_id") Integer productId, @PathVariable("quantity") Integer quantity) {
+        productService.updateProductQuantity(productId, quantity);
+    }
+
     @GetMapping()
     public ResponseEntity<List<Product>> getAllProduct(){
         List<Product>name = productService.getAllProducts();

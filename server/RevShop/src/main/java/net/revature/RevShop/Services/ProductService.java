@@ -39,4 +39,8 @@ public class ProductService {
     public List<Product> getProductsByItemName(String itemName){
         return productRepository.getAllProductsByItemName(itemName);
     }
+
+    public void updateProductQuantity(Integer productId, Integer stock) {
+        productRepository.updateProductQuantity(productId, stock);
+    }
 }
