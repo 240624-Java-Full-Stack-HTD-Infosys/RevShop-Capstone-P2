@@ -37,4 +37,11 @@ public class CartController {
     public void removeProductFromCart(@PathVariable("cartItemId")Integer cartItemId){
         cartService.removeProductFromCart(cartItemId);
     }
+
+    @PutMapping("/{cartItemId}/quantity")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<CartItem> adjustedQuantity(@PathVariable Integer cartItemId, @RequestParam Integer quantity){
+        CartItem cartItem = cartService.adjustQuantity(cartItemId, quantity);
+        return ResponseEntity.ok(cartItem);
+    }
 }
