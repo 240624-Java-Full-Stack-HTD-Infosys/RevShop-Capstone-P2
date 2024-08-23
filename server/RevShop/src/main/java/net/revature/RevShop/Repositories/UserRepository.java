@@ -14,7 +14,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Modifying
     @Query(value = "SELECT * FROM users WHERE user_id = ?1", nativeQuery = true)
     User findUserByUserId(Integer userId);
 

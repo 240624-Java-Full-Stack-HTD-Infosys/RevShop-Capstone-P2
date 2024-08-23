@@ -61,8 +61,8 @@ public class ReviewService {
         currReview.setRating(updatedReview.getRating());
         return reviewRepository.save(currReview);
     }*/
-    public void updateReview(String content, Integer reviewId){
-        reviewRepository.update(content, reviewId);
+    public void updateReview(String comment, Integer reviewId){
+        reviewRepository.update(comment, reviewId);
     }
 
     public void deleteReview(Integer reviewId) {

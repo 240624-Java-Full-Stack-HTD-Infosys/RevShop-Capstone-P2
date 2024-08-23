@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    @Modifying
     @Query(value = "SELECT * FROM products WHERE product_id = ?1", nativeQuery = true)
     Product findProductByProductId(Integer productId);
 

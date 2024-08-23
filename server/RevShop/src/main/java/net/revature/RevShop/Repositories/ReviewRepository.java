@@ -19,14 +19,12 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     //List<Review> findByUserId(Integer userId);
 
     @Modifying
-    @Query(value = "UPDATE reviews SET content = ?1 WHERE review_id = ?2", nativeQuery = true)
-    void update(String content, Integer reviewId);
+    @Query(value = "UPDATE reviews SET comment = ?1 WHERE review_id = ?2", nativeQuery = true)
+    void update(String comment, Integer reviewId);
 
-    @Modifying
     @Query(value = "SELECT * FROM reviews WHERE user_id = ?1", nativeQuery = true)
     List<Review> reviewsOfUser(Integer userId);
 
-    @Modifying
     @Query(value = "SELECT * FROM reviews WHERE product_id = ?1", nativeQuery = true)
     List<Review> reviewsOfProduct(Integer productId);
 

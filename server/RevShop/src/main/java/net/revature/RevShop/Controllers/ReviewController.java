@@ -27,17 +27,17 @@ public class ReviewController{
         this.productService = productService;
     }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/product/{productId}")
     public List<Review> getReviewsByProduct(@PathVariable Integer productId){
         return reviewService.getAllProductReviews(productId);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public List<Review> getReviewsByUser(@PathVariable Integer userId){
         return reviewService.getAllUserReviews(userId);
     }
 
-    @GetMapping("/{reviewId}")
+    @GetMapping("/review/{reviewId}")
     public Review getReviewById(@PathVariable Integer reviewId){
         return reviewService.getReviewById(reviewId);
     }
@@ -48,7 +48,7 @@ public class ReviewController{
         return reviewService.addReview(userId, productId, review);
     }
 
-    @PutMapping("/review/{reviewId}")
+    @PutMapping("/reviewEdit/{reviewId}")
     @ResponseStatus(HttpStatus.OK)
     public void updateReview(@PathVariable Integer reviewId, @RequestBody Review review){
         reviewService.updateReview(review.getComment(), reviewId);
