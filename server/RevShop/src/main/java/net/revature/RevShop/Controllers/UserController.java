@@ -44,7 +44,8 @@ public class UserController {
         if(userService.findUserByUsername(user.getUsername()) != null) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(userService.createUser(user));
+        User newUser = userService.createUser(user);
+        return ResponseEntity.ok(newUser);
     }
 
     @PutMapping("/{id}")
