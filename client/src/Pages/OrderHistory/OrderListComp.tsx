@@ -1,15 +1,17 @@
 import React from "react";
 import { HistoryElement } from "../../Interface/types.js"
+import "./Order.css";
 
 function OrderListComp(props: HistoryElement) {
 
-    console.log(props);
-
     return (
-
-        <div> 
-            <span> {props.orderId} </span>  <span> {props.createdAt} </span> <span> ${props.totalAmount} </span>
-        </div>
+        <table>
+            <tr id="row">
+                <td id="evenInfo"> {props.orderId} </td>
+                <td id="oddInfo"> {props.createdAt} </td>
+                <td id="evenInfo"> ${props.totalAmount} </td>
+            </tr>
+        </table>
     )
 
 }
