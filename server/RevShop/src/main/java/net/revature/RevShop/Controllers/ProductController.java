@@ -46,13 +46,14 @@ public class ProductController {
     public ResponseEntity<?> getAllProduct2() {
         return ResponseEntity.ok(productService.getAllProducts());
     }
+
     @GetMapping("/seller")
-    public ResponseEntity<List<Product>> getAllProductBySellerName(@RequestBody String sellerName){
-        return ResponseEntity.ok(productService.getProductsBySellerName(sellerName));
+    public List<Product> getAllProductBySellerName(@RequestBody String sellerName){
+        return productService.getProductsBySellerName(sellerName);
     }
 
-    @GetMapping("/keyword")
-    public ResponseEntity<List<Product>> getAllProductByItemName(@RequestBody String itemName){
-        return ResponseEntity.ok(productService.getProductsByItemName(itemName));
+    @GetMapping("/keyword/{name}")
+    public List<Product> getAllProductByItemName(@PathVariable("name") String name){
+        return productService.getProductsByItemName(name);
     }
 }

@@ -33,7 +33,7 @@ public class ProductService {
     }
 
     public List<Product> getProductsBySellerName(String sellerName){
-        return productRepository.getAllProductsBySellerName(sellerName);
+        return productRepository.findBySeller(sellerName);
     }
 
     public List<Product> getProductsByItemName(String itemName){
