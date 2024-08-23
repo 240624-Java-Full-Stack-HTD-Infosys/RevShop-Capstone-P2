@@ -2,13 +2,15 @@ import axios from "axios"
 import { useState } from "react"
 import '../CSS/pagination.css';
 import Produc from "../Feature/Products";
-import { Route } from "react-router-dom";
 import { Products } from "../Interface/types.js"
+import ProductPagination from "../Feature/ProductPagination";
 
 function ProductName(){
 
     let [products,setProducts] = useState(Array<Products>)
-    
+    const [currentPage,setCurrentPage] = useState(1)
+    const [productsPerPage,setProductsPerPage] = useState(2)
+
 function getProducts(){
 
     async function allProducts(){
@@ -36,14 +38,19 @@ function getProducts(){
         allProducts()
       
 }
+const indexOfLastProduct = currentPage * productsPerPage
+const indexOfFistProuct = indexOfLastProduct -productsPerPage
+const currentProduct = products.slice(indexOfFistProuct,indexOfLastProduct)
 
+const paginate = (pageNumber: number): void => setCurrentPage(pageNumber);
 
 return(
     <div>
           <input id="nameForm" className="form-control" placeholder="Item Name"/>
         <button onClick={getProducts}>Submit</button>
         
-        <Produc product={products}/>
+        <Produc product={currentProduct}/>
+        <ProductPagination productsPerPage={productsPerPage} totalProduct={products.length} pagination={paginate}/>
     </div>
 )
 }

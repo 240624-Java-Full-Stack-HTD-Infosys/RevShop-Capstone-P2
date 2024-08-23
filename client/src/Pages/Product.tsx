@@ -2,7 +2,6 @@ import axios from "axios"
 import React, { useEffect } from "react"
 import { useState } from "react"
 import '../CSS/pagination.css';
-import { Route } from "react-router-dom";
 import Produc from "../Feature/Products";
 import ProductPagination from "../Feature/ProductPagination";
 import { Products } from "../Interface/types.js"
@@ -36,23 +35,6 @@ function Product(){
     }
     allProducts()
 }, []);
-/*
-return(
-    <>{
-        product.map((p,index = 0)=>{
-        return(
-         <div key = {index}>
-          <p>Product: {p.productId} </p>
-          <p>Name: { p.name}</p>
-          <p> Product Description: {p.description}</p>
-         </div>
-        )
-        })
-    }
- 
-    </>
-)
-    */
 
 const indexOfLastProduct = currentPage * productsPerPage
 const indexOfFistProuct = indexOfLastProduct -productsPerPage
