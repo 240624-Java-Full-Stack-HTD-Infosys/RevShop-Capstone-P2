@@ -1,0 +1,19 @@
+.pagination {
+    text-align: center;
+    display: inline-block;
+    color: black
+}
+
+.pagination a{
+    color: black;
+    text-align: Left;
+  
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.container{
+   
+    display: flex;
+    flex-direction: row;
+}

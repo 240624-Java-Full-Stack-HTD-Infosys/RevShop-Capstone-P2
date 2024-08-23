@@ -1,5 +1,6 @@
 package net.revature.RevShop.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -23,7 +24,6 @@ public class Product {
 
     @JoinColumn(nullable = false, name = "sellerId")
     @ManyToOne(fetch = FetchType.EAGER)
-  
     private User seller;
 
     @Column(nullable = false)

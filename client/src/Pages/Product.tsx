@@ -1,12 +1,19 @@
 import axios from "axios"
 import React, { useEffect } from "react"
 import { useState } from "react"
+import '../CSS/pagination.css';
+import { Route } from "react-router-dom";
+import Produc from "../Feature/Products";
+import ProductPagination from "../Feature/ProductPagination";
 import { Products } from "../Interface/types.js"
+
 
 function Product(){
    
     let [product,setProduct] = useState(Array<Products>)
-    
+    const [currentPage,setCurrentPage] = useState(1)
+    const [productsPerPage,setProductsPerPage] = useState(2)
+
     useEffect(() => {
     async function allProducts(){
         const url = "http://localhost:7777/products/test";
@@ -18,7 +25,7 @@ function Product(){
                     'Content-Type': 'application/json'
                 }
             });
-    
+           
            console.log(response.data);
            setProduct(response.data)
            
@@ -46,22 +53,23 @@ return(
     </>
 )
     */
+
+const indexOfLastProduct = currentPage * productsPerPage
+const indexOfFistProuct = indexOfLastProduct -productsPerPage
+const currentProduct = product.slice(indexOfFistProuct,indexOfLastProduct)
+
+const paginate = (pageNumber: number): void => setCurrentPage(pageNumber);
+
 return (
     <div>
-      {product.map((p,index) => (
-        <div key={index}>
-          <p>Product: {p.productId}</p>
-          <p>Name: {p.name}</p>
-          <p>Product Description: {p.description}</p>
-        <p>Price: {p.price}</p>
-        <p>Stock: {p.stock}</p>
-        <p>Category Name: {p.category.name}</p>
-        <p>Seller Name: {p.seller.username}</p>
         
-        </div>
-      ))}
+    <Produc product={currentProduct}/>
+    <ProductPagination productsPerPage={productsPerPage} totalProduct={product.length} pagination={paginate}/>
+  
     </div>
+    
   );
+  
 }
 
 
